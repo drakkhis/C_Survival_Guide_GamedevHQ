@@ -5,11 +5,8 @@ using UnityEngine;
 public class ArraysChallenge : MonoBehaviour
 {
     [SerializeField]
-    private string[] _names;
-    [SerializeField]
-    private int[] _ages;
-    [SerializeField]
-    private string[] _cars;
+    private GameObject[] _cubes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +18,12 @@ public class ArraysChallenge : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            int i = Random.Range(0, 5);
-            Debug.Log("Name : " + _names[i] + " Age: " + _ages[i] + " Car: " + _cars[i]);
+            for (int i = 0; i < _cubes.Length; i++)
+            {
+                _cubes[i].GetComponent<MeshRenderer>().material.color = Color.red;
+            }
         }
+
+
     }
 }
