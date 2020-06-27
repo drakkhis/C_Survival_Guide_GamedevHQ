@@ -5,11 +5,13 @@ using UnityEngine;
 public class FunctionsMethodsChallenge : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _cube;
+    private int _healthMax;
+    [SerializeField]
+    private int _health;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _health = _healthMax;
     }
 
     // Update is called once per frame
@@ -17,12 +19,23 @@ public class FunctionsMethodsChallenge : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ChangeCubeColor(_cube, Color.red);
+            if (_health > 0)
+                Damage(Random.Range(5, 11));
+            else
+                Debug.Log("Player Is Dead");
+            Debug.Log("Player has " + _health + " health remaining");
         }
     }
 
-    private void ChangeCubeColor(GameObject obj, Color shade)
+    private void Damage(int amount)
     {
-        obj.GetComponent<MeshRenderer>().material.color = shade;
+        _health -= amount;
+        Debug.Log("Player has taken " + amount + " damage");
+        if (_health < 1)
+        {
+            _health = 0;
+            Debug.Log("Player Is Dead");
+        }
+            
     }
 }
