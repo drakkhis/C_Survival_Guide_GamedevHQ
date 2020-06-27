@@ -308,7 +308,6 @@ GameObject:
   - component: {fileID: 1946678474}
   - component: {fileID: 1946678473}
   - component: {fileID: 1946678472}
-  - component: {fileID: 1946678471}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -316,23 +315,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1946678471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946678470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3defa7f6ed16eee479bc4edc34b3865e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Quiz1: 0
-  Quiz2: 0
-  Quiz3: 0
-  Quiz4: 0
-  Quiz5: 0
 --- !u!65 &1946678472
 BoxCollider:
   m_ObjectHideFlags: 0

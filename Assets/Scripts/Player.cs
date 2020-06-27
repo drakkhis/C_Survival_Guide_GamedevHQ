@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private string _name;
-    [SerializeField]
-    private int _age;
-    [SerializeField]
-    private float _speed;
-    [SerializeField]
-    private int _health;
-    [SerializeField]
-    private int _score;
-    [SerializeField]
-    private bool _keysCollected;
-    [SerializeField]
-    private int _ammoCount;
-
+    public int myAge = 26;
+    private int _legalAgeToDrive = 16;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("My name is " + _name + ", I am " + _age + " years old");
-        Debug.Log("I have " + _health + " remaining.");
-        Debug.Log("I can move at a speed of " + _speed);
-
+         if (myAge >= _legalAgeToDrive)
+        {
+            Debug.Log("you can drive");
+        }
+        else
+        {
+            Debug.Log("You can not drive");
+        }
     }
 
     // Update is called once per frame
