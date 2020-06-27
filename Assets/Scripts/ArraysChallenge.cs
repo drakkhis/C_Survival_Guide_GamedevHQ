@@ -21,7 +21,8 @@ public class ArraysChallenge : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Name : " + _names[4] + " Age: " + _ages[4] + " Car: " + _cars[4]);
+            int i = Random.Range(0, 5);
+            Debug.Log("Name : " + _names[i] + " Age: " + _ages[i] + " Car: " + _cars[i]);
         }
     }
 }
