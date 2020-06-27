@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArraysChallenge : MonoBehaviour
+public class FunctionsMethodsChallenge : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] _cubes;
-
+    private GameObject _cube;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +17,12 @@ public class ArraysChallenge : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            for (int i = 0; i < _cubes.Length; i++)
-            {
-                _cubes[i].GetComponent<MeshRenderer>().material.color = Color.red;
-            }
+            ChangeCubeColor(_cube, Color.red);
         }
+    }
 
-
+    private void ChangeCubeColor(GameObject obj, Color shade)
+    {
+        obj.GetComponent<MeshRenderer>().material.color = shade;
     }
 }
