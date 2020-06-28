@@ -402,5 +402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c496022ed2d3aa24a80d42dea8ee041b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 50
-  _health: 0
+  _positions:
+  - {x: 1, y: 2, z: 3}
+  - {x: 4, y: 5, z: 6}
+  - {x: 7, y: 8, z: 9}
+  - {x: 10, y: 11, z: 12}
+  - {x: 13, y: 14, z: 15}
+  _player: {fileID: 2052271710}
