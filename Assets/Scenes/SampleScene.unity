@@ -309,4 +309,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db278926a7ae62489cb9cb42a6c1f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grades: 0c00000036000000550000004000000014000000640000002d0000005700000060000000230000002a000000010000001900000055000000040000000c0000004500000030000000190000000c000000540000004b00000060000000200000000c0000000500000055000000410000000f0000004a000000
+  Items:
+  - name: Sword
+    ID: 1
+    buff: 12
+  - name: Bread
+    ID: 2
+    buff: 13
+  - name: Cake
+    ID: 3
+    buff: 55
+  - name: Shoe
+    ID: 4
+    buff: 100
+  - name: Severed Head
+    ID: 5
+    buff: -20
