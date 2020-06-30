@@ -6,7 +6,7 @@ using System.Linq;
 public class CommandManager : MonoSingleton<CommandManager>
 {
     private List<ICommand> _commandBuffer = new List<ICommand>();
-    public bool isPlaying { Get; private Set; } = false;
+    public bool isPlaying { get; private set; } = false;
     public override void Init()
     {
         base.Init();
