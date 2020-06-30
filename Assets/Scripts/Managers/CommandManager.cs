@@ -7,7 +7,6 @@ public class CommandManager : MonoSingleton<CommandManager>
 {
     private List<ICommand> _commandBuffer = new List<ICommand>();
     public bool isPlaying { get; private set; } = false;
-    List<GameObject> cubes = new List<GameObject>();
     public override void Init()
     {
         base.Init();
@@ -17,16 +16,17 @@ public class CommandManager : MonoSingleton<CommandManager>
 
     public void Record(ICommand command)
     {
-        _commandBuffer.Add(command);
+        if (isPlaying == false)
+            _commandBuffer.Add(command);
     }
     
     public void Play()
     {
         if (isPlaying == false)
-        StartCoroutine(IPlay());
+        StartCoroutine(PlayRoutine());
     }
 
-    public IEnumerator IPlay()
+    public IEnumerator PlayRoutine()
     {
         isPlaying = true;
         foreach (var command in _commandBuffer)
@@ -40,31 +40,31 @@ public class CommandManager : MonoSingleton<CommandManager>
     public void Rewind()
     {
         if (isPlaying == false)
-        StartCoroutine(IRewind());
+        StartCoroutine(RewindRoutine());
     }
 
-    public IEnumerator IRewind()
+    public IEnumerator RewindRoutine()
     {
         isPlaying = true;
-        _commandBuffer.Reverse();
-        foreach (var command in _commandBuffer)
+        foreach (var command in Enumerable.Reverse(_commandBuffer))
         {
 
             command.Undo();
             yield return new WaitForSeconds(1);
         }
-        _commandBuffer.Reverse();
         isPlaying = false;
     }
 
     public void Done()
     {
-        GameObject.FindGameObjectsWithTag("Cube").ToList().ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white);
+        if (isPlaying == false)
+            GameObject.FindGameObjectsWithTag("Cube").ToList().ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white);
     }
 
     public void Reset()
     {
-        _commandBuffer.Clear();
+        if (isPlaying == false)
+            _commandBuffer.Clear();
     }
 
 }
