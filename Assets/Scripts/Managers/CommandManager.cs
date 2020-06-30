@@ -12,7 +12,9 @@ public class CommandManager : MonoSingleton<CommandManager>
     {
         base.Init();
         cubes =GameObject.FindGameObjectsWithTag("Cube").ToList();
-        ICommand start = cubes.ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white);
+        cubes.ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white));
+        cubes.ForEach(g => Record(g));
+        
     }
 
     public void Record(ICommand command)
@@ -64,6 +66,8 @@ public class CommandManager : MonoSingleton<CommandManager>
     public void Reset()
     {
         _commandBuffer.Clear();
+        cubes.ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white));
+        cubes.ForEach(g => Record(g));
     }
 
 }
