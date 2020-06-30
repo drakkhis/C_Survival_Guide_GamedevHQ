@@ -17,7 +17,6 @@ public class CommandManager : MonoSingleton<CommandManager>
 
     public void Record(ICommand command)
     {
-        if (_commandBuffer[-1] != command)
         _commandBuffer.Add(command);
     }
     
@@ -47,14 +46,13 @@ public class CommandManager : MonoSingleton<CommandManager>
     public IEnumerator IRewind()
     {
         isPlaying = true;
-        _commandBuffer.Reverse();
-        foreach (var command in _commandBuffer)
+        List<var> temp = _commandBuffer.Reverse();
+        foreach (var command in temp)
         {
 
-            command.Exicute();
+            command.Undo();
             yield return new WaitForSeconds(1);
         }
-        _commandBuffer.Reverse();
         isPlaying = false;
     }
 
