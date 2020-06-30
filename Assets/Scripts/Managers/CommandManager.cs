@@ -7,10 +7,12 @@ public class CommandManager : MonoSingleton<CommandManager>
 {
     private List<ICommand> _commandBuffer = new List<ICommand>();
     public bool isPlaying { Get; private Set; } = false;
+    List<GameObject> cubes = new List<GameObject>;
     public override void Init()
     {
         base.Init();
-
+        cubes =GameObject.FindGameObjectsWithTag("Cube").ToList();
+        ICommand start = cubes.ForEach(g => g.GetComponent<MeshRenderer>().material.color = Color.white);
     }
 
     public void Record(ICommand command)
