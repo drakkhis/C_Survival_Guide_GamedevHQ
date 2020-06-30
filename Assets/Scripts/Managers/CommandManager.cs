@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -6,6 +6,7 @@ using System.Linq;
 public class CommandManager : MonoSingleton<CommandManager>
 {
     private List<ICommand> _commandBuffer = new List<ICommand>();
+    public bool isPlaying { Get; private Set; } = false;
     public override void Init()
     {
         base.Init();
@@ -16,18 +17,33 @@ public class CommandManager : MonoSingleton<CommandManager>
     {
         _commandBuffer.Add(command);
     }
-
-    public IEnumerator Play()
+    
+    public void Play()
     {
+        if (isPlaying == false)
+        StartCoroutine(IPlay());
+    }
+
+    public IEnumerator IPlay()
+    {
+        isPlaying = true;
         foreach (var command in _commandBuffer)
         {
             command.Exicute();
             yield return new WaitForSeconds(1);
         }
+        isPlaying = false;
+    }
+    
+    public void Rewind()
+    {
+        if (isPlaying == false)
+        StartCoroutine(IRewind());
     }
 
-    public IEnumerator Rewind()
+    public IEnumerator IRewind()
     {
+        isPlaying = true;
         _commandBuffer.Reverse();
         foreach (var command in _commandBuffer)
         {
@@ -35,6 +51,7 @@ public class CommandManager : MonoSingleton<CommandManager>
             command.Exicute();
             yield return new WaitForSeconds(1);
         }
+        isPlaying = false;
     }
 
     public void Done()
