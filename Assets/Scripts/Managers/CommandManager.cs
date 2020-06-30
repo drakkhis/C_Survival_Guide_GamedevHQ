@@ -11,17 +11,13 @@ public class CommandManager : MonoSingleton<CommandManager>
     public override void Init()
     {
         base.Init();
-        cubes = GameObject.FindGameObjectsWithTag("Cube").ToList();
-        foreach (var cube in cubes)
-        {
-            ICommand start = new ClickCommand(cube,Color.white);
-            Record(start);
-        }
+        
         
     }
 
     public void Record(ICommand command)
     {
+        if (_commandBuffer[-1] != command)
         _commandBuffer.Add(command);
     }
     
@@ -70,11 +66,6 @@ public class CommandManager : MonoSingleton<CommandManager>
     public void Reset()
     {
         _commandBuffer.Clear();
-        foreach (var cube in cubes)
-        {
-            ICommand start = new ClickCommand(cube,Color.white);
-            Record(start);
-        }
     }
 
 }
