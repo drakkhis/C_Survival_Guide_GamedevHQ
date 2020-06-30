@@ -58,6 +58,7 @@ public class CommandManager : MonoSingleton<CommandManager>
             command.Exicute();
             yield return new WaitForSeconds(1);
         }
+        _commandBuffer.Reverse();
         isPlaying = false;
     }
 
