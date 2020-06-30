@@ -46,13 +46,14 @@ public class CommandManager : MonoSingleton<CommandManager>
     public IEnumerator IRewind()
     {
         isPlaying = true;
-        List<var> temp = _commandBuffer.Reverse();
-        foreach (var command in temp)
+        _commandBuffer.Reverse();
+        foreach (var command in _commandBuffer)
         {
 
             command.Undo();
             yield return new WaitForSeconds(1);
         }
+        _commandBuffer.Reverse();
         isPlaying = false;
     }
 
